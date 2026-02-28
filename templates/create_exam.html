@@ -123,6 +123,67 @@
         from { opacity: 0; transform: translateY(30px); }
         to { opacity: 1; transform: translateY(0); }
     }
+
+
+/* ================= MOBILE RESPONSIVE FIX ================= */
+@media (max-width: 768px) {
+
+    /* Fix fixed background scroll issue */
+    body {
+        background-attachment: scroll;
+    }
+
+    /* Card spacing adjust */
+    .card {
+        margin: 15px;
+        padding: 20px !important;
+        border-radius: 16px !important;
+    }
+
+    /* Heading resize */
+    h3 {
+        font-size: 20px;
+        text-align: center;
+    }
+
+    /* Label resize */
+    .form-label {
+        font-size: 14px;
+    }
+
+    /* Inputs smaller */
+    input, select {
+        font-size: 14px !important;
+        padding: 8px 12px !important;
+    }
+
+    /* Toggle adjust */
+    .form-check {
+        gap: 10px;
+    }
+
+    .form-check-input {
+        width: 55px !important;
+        height: 28px !important;
+    }
+
+    .form-check-label {
+        font-size: 14px;
+    }
+
+    /* Buttons full width on mobile */
+    .btn-primary,
+    .btn-outline-secondary {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    /* Remove hover lift on mobile */
+    .btn-primary:hover {
+        transform: none;
+    }
+
+}
 </style>
 <div class="container mt-5">
 

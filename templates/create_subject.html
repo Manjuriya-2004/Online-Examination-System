@@ -78,7 +78,51 @@
         from { opacity: 0; transform: translateY(25px); }
         to { opacity: 1; transform: translateY(0); }
     }
+
+
+/* ================= MOBILE RESPONSIVE FIX ================= */
+@media (max-width: 768px) {
+
+    /* Fix fixed background glitch */
+    body {
+        background-attachment: scroll;
+    }
+
+    /* Reduce heading size */
+    h2 {
+        font-size: 20px;
+        margin-bottom: 20px;
+        padding: 0 10px;
+    }
+
+    /* Make form responsive */
+    form {
+        width: 90%;
+        padding: 25px;
+        border-radius: 16px;
+    }
+
+    /* Input adjustments */
+    input[type="text"] {
+        font-size: 13px;
+        padding: 10px;
+    }
+
+    /* Button adjustments */
+    button {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    /* Remove hover lift on mobile */
+    button:hover {
+        transform: none;
+    }
+
+}
 </style>
+
+
 <h2>Create Subject</h2>
 
 <form method="POST">

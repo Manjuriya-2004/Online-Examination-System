@@ -3,19 +3,19 @@
 
 <style>
 
-/* 🔥 NEW Premium Background (Different Image) */
+/* 🔥 Premium Background */
 body {
     background: linear-gradient(rgba(10,15,30,0.88), rgba(10,15,30,0.88)),
                 url('https://images.unsplash.com/photo-1508780709619-79562169bc64');
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
+    background-attachment: scroll;
 }
 
 /* Wrapper */
 .results-wrapper {
     min-height: 90vh;
-    padding-top: 50px;
+    padding-top: 40px;
 }
 
 /* Page Title */
@@ -26,76 +26,87 @@ h2 {
     text-shadow: 0 4px 20px rgba(0,0,0,0.6);
 }
 
-/* 🔥 Glass Card */
+/* Glass Card */
 .results-card {
-    border-radius: 30px;
+    border-radius: 20px;
     background: rgba(255,255,255,0.08);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
     border: 1px solid rgba(255,255,255,0.25);
-    box-shadow: 0 25px 60px rgba(0,0,0,0.6);
-    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.6);
     color: white;
 }
 
-/* Table Styling */
+/* Table */
 .table {
     color: white;
+    width: 100%;
 }
 
-/* Table Header */
+/* Remove forced width */
+.table-responsive {
+    overflow-x: auto;
+}
+
+/* Header */
 .table thead {
     background: rgba(0,0,0,0.6);
 }
 
 .table thead th {
-    border-bottom: 2px solid rgba(255,255,255,0.2);
     color: #ffffff;
+    border-bottom: 2px solid rgba(255,255,255,0.2);
 }
 
-/* Row Hover */
-.table tbody tr {
-    transition: 0.3s ease;
-}
-
+/* Hover */
 .table tbody tr:hover {
     background: rgba(255,255,255,0.08);
-    transform: scale(1.02);
 }
 
-/* Score Color */
-.text-primary {
-    color: #4da3ff !important;
-}
-
-/* Percentage Badge */
+/* Badges */
 .badge.bg-info {
     background: linear-gradient(135deg,#00c6ff,#0072ff) !important;
     border-radius: 20px;
-    font-weight: 600;
 }
 
-/* Pass Badge */
 .pass-badge {
     background: linear-gradient(135deg,#00e676,#00c853);
-    border-radius: 25px;
-    font-weight: 600;
+    border-radius: 20px;
 }
 
-/* Fail Badge */
 .fail-badge {
     background: linear-gradient(135deg,#ff5252,#d50000);
-    border-radius: 25px;
-    font-weight: 600;
+    border-radius: 20px;
 }
 
-/* Empty text */
-.text-muted {
-    color: rgba(255,255,255,0.7) !important;
+/* Mobile Fix */
+@media (max-width: 768px) {
+
+    .results-wrapper {
+        padding-top: 25px;
+    }
+
+    h2 {
+        font-size: 20px;
+        text-align: center;
+    }
+
+    .results-card {
+        padding: 12px !important;
+    }
+
+    .table {
+        font-size: 14px;
+    }
+
+    .badge {
+        font-size: 12px;
+        padding: 4px 8px;
+    }
 }
 
 </style>
-<div class="container results-wrapper">
+<div class="results-wrapper">
 
     <h2 class="fw-bold mb-4">📊 My Results</h2>
 

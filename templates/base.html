@@ -3,6 +3,9 @@
 <head>
     <title>Online Exam Portal</title>
 
+    <!-- Responsive Meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <!-- Bootstrap CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
@@ -45,7 +48,6 @@ body {
     color: #4da3ff !important;
 }
 
-/* Underline Animation */
 .navbar-nav .nav-link::after {
     content: "";
     position: absolute;
@@ -102,7 +104,7 @@ footer::before {
     backdrop-filter: blur(10px);
 }
 
-footer .container-fluid {
+footer .container {
     position: relative;
     z-index: 2;
 }
@@ -134,8 +136,38 @@ footer small {
     color: rgba(255,255,255,0.6);
 }
 
-footer:hover {
-    box-shadow: 0 -10px 40px rgba(77,163,255,0.2);
+/* ================= MOBILE IMPROVEMENTS ================= */
+@media (max-width: 768px) {
+
+    main {
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+    }
+
+    .navbar-brand {
+        font-size: 18px;
+    }
+
+    .navbar-nav {
+        text-align: center;
+    }
+
+    .navbar-nav .nav-item {
+        margin-bottom: 8px;
+    }
+
+    .btn {
+        width: 100%;
+        margin-top: 8px;
+    }
+
+    footer h5 {
+        font-size: 16px;
+    }
+
+    footer p {
+        font-size: 13px;
+    }
 }
 
     </style>
@@ -145,7 +177,7 @@ footer:hover {
 
 <!-- ================= NAVBAR ================= -->
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-    <div class="container-fluid px-4">
+    <div class="container">
 
         <a class="navbar-brand" href="{% url 'home' %}">
             Online Exam
@@ -160,108 +192,62 @@ footer:hover {
         <div class="collapse navbar-collapse" id="navbarNav">
 
             <ul class="navbar-nav me-auto">
-
                 {% if user.is_authenticated %}
 
                     {% if user.role == 'teacher' %}
-
                         <li class="nav-item">
-                            <a class="nav-link {% if request.resolver_match.url_name == 'teacher_dashboard' %}active fw-bold text-warning{% endif %}"
-                               href="{% url 'teacher_dashboard' %}">
-                               Dashboard
-                            </a>
+                            <a class="nav-link" href="{% url 'teacher_dashboard' %}">Dashboard</a>
                         </li>
-
                         <li class="nav-item">
-                            <a class="nav-link"
-                               href="{% url 'teacher_results' %}">
-                               Student Results
-                            </a>
+                            <a class="nav-link" href="{% url 'teacher_results' %}">Student Results</a>
                         </li>
-
                         <li class="nav-item">
-                            <a class="nav-link {% if request.resolver_match.url_name == 'my_exams' %}active fw-bold text-warning{% endif %}"
-                               href="{% url 'my_exams' %}">
-                               My Exams
-                            </a>
+                            <a class="nav-link" href="{% url 'my_exams' %}">My Exams</a>
                         </li>
-
                         <li class="nav-item">
-                            <a class="nav-link"
-                               href="{% url 'leaderboard' %}">
-                               Leaderboard
-                            </a>
+                            <a class="nav-link" href="{% url 'leaderboard' %}">Leaderboard</a>
                         </li>
-
                     {% elif user.role == 'student' %}
-
                         <li class="nav-item">
-                            <a class="nav-link {% if request.resolver_match.url_name == 'student_dashboard' %}active fw-bold text-warning{% endif %}"
-                               href="{% url 'student_dashboard' %}">
-                               Dashboard
-                            </a>
+                            <a class="nav-link" href="{% url 'student_dashboard' %}">Dashboard</a>
                         </li>
-
                         <li class="nav-item">
-                            <a class="nav-link {% if request.resolver_match.url_name == 'student_exams' %}active fw-bold text-warning{% endif %}"
-                               href="{% url 'student_exams' %}">
-                               Browse Exams
-                            </a>
+                            <a class="nav-link" href="{% url 'student_exams' %}">Browse Exams</a>
                         </li>
-
                         <li class="nav-item">
-                            <a class="nav-link {% if request.resolver_match.url_name == 'student_results' %}active fw-bold text-warning{% endif %}"
-                               href="{% url 'student_results' %}">
-                               My Results
-                            </a>
+                            <a class="nav-link" href="{% url 'student_results' %}">My Results</a>
                         </li>
-
                         <li class="nav-item">
-                            <a class="nav-link"
-                               href="{% url 'leaderboard' %}">
-                               Leaderboard
-                            </a>
+                            <a class="nav-link" href="{% url 'leaderboard' %}">Leaderboard</a>
                         </li>
-
                     {% endif %}
-
                 {% endif %}
-
             </ul>
 
-            <ul class="navbar-nav ms-auto align-items-center">
+            <ul class="navbar-nav ms-auto align-items-lg-center">
 
                 {% if user.is_authenticated %}
-
-                    <li class="nav-item">
-                        <span class="text-white me-3">
+                    <li class="nav-item text-center text-lg-start">
+                        <span class="text-white d-block d-lg-inline me-lg-3 mb-2 mb-lg-0">
                             Welcome, <strong>{{ user.username }}</strong>
                         </span>
                     </li>
-
                     <li class="nav-item">
-                        <a class="btn btn-danger btn-sm"
-                           href="{% url 'logout' %}">
-                           Logout
+                        <a class="btn btn-danger btn-sm" href="{% url 'logout' %}">
+                            Logout
                         </a>
                     </li>
-
                 {% else %}
-
                     <li class="nav-item">
-                        <a class="nav-link"
-                           href="{% url 'login' %}">
-                           Login
+                        <a class="nav-link text-center" href="{% url 'login' %}">
+                            Login
                         </a>
                     </li>
-
                     <li class="nav-item">
-                        <a class="btn btn-success btn-sm ms-2"
-                           href="{% url 'register' %}">
-                           Register
+                        <a class="btn btn-success btn-sm ms-lg-2" href="{% url 'register' %}">
+                            Register
                         </a>
                     </li>
-
                 {% endif %}
 
             </ul>
@@ -271,23 +257,22 @@ footer:hover {
 </nav>
 
 <!-- ================= MAIN ================= -->
-<main class="container-fluid flex-fill mt-5 pt-4 px-4">
+<main class="container flex-fill mt-5 pt-4 px-3 px-md-4">
     {% block content %}
     {% endblock %}
 </main>
 
 <!-- ================= FOOTER ================= -->
 <footer class="text-center py-4 mt-auto">
-    <div class="container-fluid">
+    <div class="container">
 
         <h5>Online Exam Portal – Digital Assessment Platform</h5>
-
         <p>Secure • Scalable • Real-Time Examination Management</p>
         <p>Powered by Python, Django & Modern Web Architecture</p>
 
         <p class="mt-2">
-            📧 support@onlineexamportal.com |
-            📞 +91 73958 14082
+            📧 csprogramer19@gmail.com |
+            📞 +91  80154 31567
         </p>
 
         <div class="mt-2">

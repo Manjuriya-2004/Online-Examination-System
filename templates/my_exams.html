@@ -101,6 +101,58 @@
         color: hsl(0, 28%, 95%);
         border: 1px solid rgba(255,255,255,0.15);
     }
+
+/* ================= MOBILE RESPONSIVE FIX ================= */
+@media (max-width: 768px) {
+
+    /* Background mobile glitch fix */
+    body {
+        background-attachment: scroll;
+    }
+
+    /* Title center + resize */
+    h2 {
+        font-size: 22px;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    /* Stack buttons vertically */
+    a[href*="create"] {
+        display: block;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 12px;
+    }
+
+    /* Make table scrollable */
+    table {
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    /* Reduce font size */
+    th, td {
+        font-size: 14px;
+        padding: 8px !important;
+    }
+
+    /* Remove hover lift in mobile */
+    tr:hover {
+        transform: none;
+    }
+
+    /* Actions spacing */
+    td a {
+        display: inline-block;
+        margin: 4px 0;
+        font-size: 13px;
+    }
+
+}
+
 </style>
 
 <h2 style="margin-bottom:20px;">My Exams</h2>
