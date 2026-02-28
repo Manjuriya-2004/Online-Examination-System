@@ -1,0 +1,166 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<style>
+
+/* 🔥 NEW Premium Background (Different Image) */
+body {
+    background: linear-gradient(rgba(10,15,30,0.88), rgba(10,15,30,0.88)),
+                url('https://images.unsplash.com/photo-1508780709619-79562169bc64');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+/* Wrapper */
+.results-wrapper {
+    min-height: 90vh;
+    padding-top: 50px;
+}
+
+/* Page Title */
+h2 {
+    color: #ffffff;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-shadow: 0 4px 20px rgba(0,0,0,0.6);
+}
+
+/* 🔥 Glass Card */
+.results-card {
+    border-radius: 30px;
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.25);
+    box-shadow: 0 25px 60px rgba(0,0,0,0.6);
+    overflow: hidden;
+    color: white;
+}
+
+/* Table Styling */
+.table {
+    color: white;
+}
+
+/* Table Header */
+.table thead {
+    background: rgba(0,0,0,0.6);
+}
+
+.table thead th {
+    border-bottom: 2px solid rgba(255,255,255,0.2);
+    color: #ffffff;
+}
+
+/* Row Hover */
+.table tbody tr {
+    transition: 0.3s ease;
+}
+
+.table tbody tr:hover {
+    background: rgba(255,255,255,0.08);
+    transform: scale(1.02);
+}
+
+/* Score Color */
+.text-primary {
+    color: #4da3ff !important;
+}
+
+/* Percentage Badge */
+.badge.bg-info {
+    background: linear-gradient(135deg,#00c6ff,#0072ff) !important;
+    border-radius: 20px;
+    font-weight: 600;
+}
+
+/* Pass Badge */
+.pass-badge {
+    background: linear-gradient(135deg,#00e676,#00c853);
+    border-radius: 25px;
+    font-weight: 600;
+}
+
+/* Fail Badge */
+.fail-badge {
+    background: linear-gradient(135deg,#ff5252,#d50000);
+    border-radius: 25px;
+    font-weight: 600;
+}
+
+/* Empty text */
+.text-muted {
+    color: rgba(255,255,255,0.7) !important;
+}
+
+</style>
+<div class="container results-wrapper">
+
+    <h2 class="fw-bold mb-4">📊 My Results</h2>
+
+    <div class="card results-card p-4 border-0">
+
+        <div class="table-responsive">
+            <table class="table table-hover text-center align-middle">
+
+                <thead class="table-dark">
+                    <tr>
+                        <th>Exam</th>
+                        <th>Score</th>
+                        <th>Percentage</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                {% for result in results %}
+                <tr>
+                    <td class="fw-semibold">
+                        {{ result.exam.title }}
+                    </td>
+
+                    <td class="fw-bold text-primary">
+                        {{ result.score }}
+                    </td>
+
+                    <td>
+                        <span class="badge bg-info text-dark px-3 py-2">
+                            {{ result.percentage|floatformat:0 }}%
+                        </span>
+                    </td>
+
+                    <td>
+                        {% if result.percentage >= 50 %}
+                            <span class="badge pass-badge text-white px-3 py-2">
+                                ✅ Passed
+                            </span>
+                        {% else %}
+                            <span class="badge fail-badge text-white px-3 py-2">
+                                ❌ Failed
+                            </span>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="4" class="text-muted py-4">
+                        🚫 No results available yet.
+                    </td>
+
+                </tr>
+                {% endfor %}
+
+                </tbody>
+
+            </table>
+            
+        </div>
+
+    </div>
+
+
+</div>
+
+{% endblock %}
